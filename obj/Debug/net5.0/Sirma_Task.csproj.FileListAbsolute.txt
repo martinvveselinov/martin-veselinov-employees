@@ -1,0 +1,16 @@
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.exe
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.deps.json
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.runtimeconfig.json
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.runtimeconfig.dev.json
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.dll
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\ref\Sirma_Task.dll
+C:\Users\HP 15\source\repos\Sirma_Task\bin\Debug\net5.0\Sirma_Task.pdb
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.AssemblyInfoInputs.cache
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.AssemblyInfo.cs
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.csproj.CoreCompileInputs.cache
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.dll
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\ref\Sirma_Task.dll
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.pdb
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.genruntimeconfig.cache
+C:\Users\HP 15\source\repos\Sirma_Task\obj\Debug\net5.0\Sirma_Task.csproj.AssemblyReference.cache
