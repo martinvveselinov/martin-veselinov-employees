@@ -10,6 +10,7 @@ namespace Sirma_Task
         private int projID;
         private DateTime from;
         private DateTime to;
+
         public Employee(int empID, int projID, DateTime from, DateTime to){
             this.empID = empID;
             this.projID = projID;
