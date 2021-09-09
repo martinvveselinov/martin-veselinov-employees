@@ -16,16 +16,18 @@ namespace Sirma_Task
         }
         static List<Employee> ReadFile(string fileName)
         {
-            using var reader = new StreamReader(fileName);
+            StreamReader reader = new StreamReader(fileName);
             List<Employee> allWorks = new List<Employee>();
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
                 var values = line.Split(',');
-                int empID = Int32.Parse(values[0]);
-                int projID = Int32.Parse(values[1]);
-                DateTime dateFrom = DateTime.Parse(values[2]);
-                DateTime dateTo = NullHandler(values[3]);
+                int empID, projID;
+                DateTime dateFrom, dateTo;
+                empID = Int32.Parse(values[0]);
+                projID = Int32.Parse(values[1]);
+                dateFrom = DateTime.Parse(values[2]);
+                dateTo = NullHandler(values[3]);
                 Employee current = new Employee(empID, projID, dateFrom, dateTo);
                 allWorks.Add(current);
             }
@@ -72,11 +74,23 @@ namespace Sirma_Task
         }
         static void Main(string[] args)
         {
-            List<Employee> allWorks = ReadFile("data.txt");
-            SplitIntoProjects(out List<List<Employee>> projects, allWorks);
-            GetTouples(out WorkedTogether relations, projects);
-            Console.WriteLine(relations.tuples.Count);
-            relations.GetMaxWorkTime();
+            
+            try
+            {
+                List<Employee> allWorks = ReadFile("data.txt");
+                if(allWorks.Count == 0)
+                {
+                    throw new Exception("File is empty!");
+                }
+                SplitIntoProjects(out List<List<Employee>> projects, allWorks);
+                GetTouples(out WorkedTogether relations, projects);
+                relations.GetMaxWorkTime();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+           
         }
     }
 }
