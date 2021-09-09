@@ -17,6 +17,7 @@ namespace Sirma_Task
             this.from = from;
             this.to = to;
         }
+
         public int getEmpID()
         {
             return empID;

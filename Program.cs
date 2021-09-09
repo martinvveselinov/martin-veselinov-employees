@@ -10,14 +10,9 @@ namespace Sirma_Task
         static DateTime NullHandler(string text)
         {
             DateTime date;
-            if (DateTime.TryParse(text, out date))
-            {
-                return date;
-            }
-            else
-            {
-                return DateTime.Today;
-            }
+            if (DateTime.TryParse(text, out date)) return date;
+            else return DateTime.Today;
+            
         }
         static List<Employee> ReadFile(string fileName)
         {
@@ -68,12 +63,9 @@ namespace Sirma_Task
             {
                 for (int i = 0; i < proj.Count; ++i)
                 {
-                    for (int j = 0; j < proj.Count; ++j)
+                    for (int j = i+1; j < proj.Count; ++j)
                     {
-                        if (i != j)
-                        {
-                            relations.AddTouple(proj[i], proj[j]);
-                        }
+                        relations.AddTouple(proj[i], proj[j]);
                     }
                 }
             }
@@ -82,7 +74,8 @@ namespace Sirma_Task
         {
             List<Employee> allWorks = ReadFile("data.txt");
             SplitIntoProjects(out List<List<Employee>> projects, allWorks);
-            GetTouples(out WorkedTogether relations, projects);  
+            GetTouples(out WorkedTogether relations, projects);
+            Console.WriteLine(relations.tuples.Count);
             relations.GetMaxWorkTime();
         }
     }

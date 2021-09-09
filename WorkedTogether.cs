@@ -8,19 +8,17 @@ namespace Sirma_Task
 {
     class WorkedTogether
     {
-        private List<Tuple<Employee, Employee>> tuples;
+        public List<Tuple<Employee, Employee>> tuples;
         private int emp1;
         private int emp2;
-        private int proj;
-        private double worktime;
+
         public WorkedTogether()
         {
             tuples = new List<Tuple<Employee, Employee>>();
             emp1 = -1;
             emp2 = -1;
-            proj = -1;
-            worktime = -1;
         }
+
         public void AddTouple(Employee emp1, Employee emp2)
         {
            Tuple<Employee, Employee> t = new Tuple<Employee, Employee>(emp1, emp2);
@@ -38,29 +36,42 @@ namespace Sirma_Task
             double totalDays = interval > TimeSpan.FromSeconds(0) ? interval.TotalDays : 0;
             return totalDays;
         }
+        public bool EqualTuples(Tuple<Employee, Employee> t1, Tuple<Employee, Employee> t2)
+        {
+            if ((t1.Item1.getEmpID() == t2.Item1.getEmpID() && t1.Item2.getEmpID() == t2.Item2.getEmpID()) ||
+                (t1.Item1.getEmpID() == t2.Item2.getEmpID() && t1.Item2.getEmpID() == t2.Item1.getEmpID()))
+             return true;
+            
+            else return false;            
+        }
         public void GetMaxWorkTime()
         {
-            double max = double.MinValue;
-            foreach(var tuple in tuples)
+            List<Tuple<Employee, Employee>> workedtogether = new();
+            List<double> worktime = new();
+            worktime.Add(GetWorkTime(tuples[0]));
+            workedtogether.Add(tuples[0]);
+            double max = worktime[0];
+            int maxInd = 0;
+            for(int i = 1; i < tuples.Count; ++i)
             {
-                double time = GetWorkTime(tuple);
-                if (time >= max)
+                for(int j = 0; j < workedtogether.Count; ++j)
                 {
-                    max = time;
-                    emp1 = tuple.Item1.getEmpID();
-                    emp2 = tuple.Item2.getEmpID();
-                    proj = tuple.Item1.getProjID();
-                    worktime = max;
+                    if (EqualTuples(tuples[i], workedtogether[j]))
+                    {
+                        worktime[j] += GetWorkTime(tuples[i]);
+                        if (worktime[j] > max)
+                        {
+                            max = worktime[j];
+                            maxInd = j;
+                        }
+                    }
                 }
-            }
-            Console.WriteLine($"Employee {emp1} and employee {emp2} have worked together in project {proj} for {worktime} days, which is the longest of all employees.");
-        }
-        public void PrintRelations()
-        {
-            foreach (var rel in tuples)
-            {
-                Console.WriteLine($"{rel.Item1.getEmpID()} has worked with {rel.Item2.getEmpID()}");
-            }
+                workedtogether.Add(tuples[i]);
+                worktime.Add(GetWorkTime(tuples[i]));
+                }
+            emp1 = workedtogether[maxInd].Item1.getEmpID();
+            emp2 = workedtogether[maxInd].Item2.getEmpID();
+            Console.WriteLine($"Employee {emp1} and employee {emp2} have worked the longest together: {worktime[maxInd]} days total.");
         }
     }
 }
