@@ -8,13 +8,13 @@ namespace Sirma_Task
 {
     class WorkedTogether
     {
-        public List<Tuple<Employee, Employee>> Тuples;
+        private List<Tuple<Employee, Employee>> _tuples;
         private int _emp1;
         private int _emp2;
 
         public WorkedTogether()
         {
-            Тuples = new List<Tuple<Employee, Employee>>();
+            _tuples = new List<Tuple<Employee, Employee>>();
             _emp1 = -1;
             _emp2 = -1;
         }
@@ -22,7 +22,7 @@ namespace Sirma_Task
         public void AddTouple(Employee emp1, Employee emp2)
         {
            Tuple<Employee, Employee> t = new Tuple<Employee, Employee>(emp1, emp2);
-           Тuples.Add(t);
+           _tuples.Add(t);
         }
         public double GetWorkTime(Tuple<Employee, Employee> t)
         {
@@ -51,17 +51,17 @@ namespace Sirma_Task
         {
             List<Tuple<Employee, Employee>> workedТogether = new();
             List<double> workТime = new();
-            workТime.Add(GetWorkTime(Тuples[0]));
-            workedТogether.Add(Тuples[0]);
+            workТime.Add(GetWorkTime(_tuples[0]));
+            workedТogether.Add(_tuples[0]);
             double max = workТime[0];
             int maxInd = 0;
-            for(int i = 1; i < Тuples.Count; ++i)
+            for(int i = 1; i < _tuples.Count; ++i)
             {
                 for(int j = 0; j < workedТogether.Count; ++j)
                 {
-                    if (EqualTuples(Тuples[i], workedТogether[j]))
+                    if (EqualTuples(_tuples[i], workedТogether[j]))
                     {
-                        workТime[j] += GetWorkTime(Тuples[i]);
+                        workТime[j] += GetWorkTime(_tuples[i]);
                         if (workТime[j] > max)
                         {
                             max = workТime[j];
@@ -69,8 +69,8 @@ namespace Sirma_Task
                         }
                     }
                 }
-                workedТogether.Add(Тuples[i]);
-                workТime.Add(GetWorkTime(Тuples[i]));
+                workedТogether.Add(_tuples[i]);
+                workТime.Add(GetWorkTime(_tuples[i]));
                 }
             _emp1 = workedТogether[maxInd].Item1.getEmpID();
             _emp2 = workedТogether[maxInd].Item2.getEmpID();

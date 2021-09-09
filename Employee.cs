@@ -6,33 +6,33 @@ namespace Sirma_Task
 {
     public class Employee
     {
-        private int empID;
-        private int projID;
-        private DateTime from;
-        private DateTime to;
+        private int _empID;
+        private int _projID;
+        private DateTime _from;
+        private DateTime _to;
 
         public Employee(int empID, int projID, DateTime from, DateTime to){
-            this.empID = empID;
-            this.projID = projID;
-            this.from = from;
-            this.to = to;
+            _empID = empID;
+            _projID = projID;
+            _from = from;
+            _to = to;
         }
 
         public int getEmpID()
         {
-            return empID;
+            return _empID;
         }
         public int getProjID()
         {
-            return projID;
+            return _projID;
         }
         public DateTime getStartDate()
         {
-            return from;
+            return _from;
         }
         public DateTime getFinalDate()
         {
-            return to;
+            return _to;
         }
     }
 }
