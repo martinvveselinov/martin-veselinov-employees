@@ -38,6 +38,7 @@ namespace Sirma_Task
             projects = new List<List<Employee>>();
 
             List<Employee> currentProjectWorkers = new List<Employee>();
+
             for (int i = 0; i < allWorks.Count; ++i)
             {
                 if (i == allWorks.Count - 1)
@@ -73,8 +74,7 @@ namespace Sirma_Task
             }
         }
         static void Main(string[] args)
-        {
-            
+        {   
             try
             {
                 List<Employee> allWorks = ReadFile("data.txt");
@@ -90,7 +90,6 @@ namespace Sirma_Task
             {
                 Console.WriteLine("Exception: " + e.Message);
             }
-           
         }
     }
 }

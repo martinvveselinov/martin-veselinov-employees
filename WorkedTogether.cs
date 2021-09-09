@@ -8,21 +8,21 @@ namespace Sirma_Task
 {
     class WorkedTogether
     {
-        public List<Tuple<Employee, Employee>> tuples;
-        private int emp1;
-        private int emp2;
+        public List<Tuple<Employee, Employee>> Тuples;
+        private int _emp1;
+        private int _emp2;
 
         public WorkedTogether()
         {
-            tuples = new List<Tuple<Employee, Employee>>();
-            emp1 = -1;
-            emp2 = -1;
+            Тuples = new List<Tuple<Employee, Employee>>();
+            _emp1 = -1;
+            _emp2 = -1;
         }
 
         public void AddTouple(Employee emp1, Employee emp2)
         {
            Tuple<Employee, Employee> t = new Tuple<Employee, Employee>(emp1, emp2);
-           tuples.Add(t);
+           Тuples.Add(t);
         }
         public double GetWorkTime(Tuple<Employee, Employee> t)
         {
@@ -38,40 +38,43 @@ namespace Sirma_Task
         }
         public bool EqualTuples(Tuple<Employee, Employee> t1, Tuple<Employee, Employee> t2)
         {
-            if ((t1.Item1.getEmpID() == t2.Item1.getEmpID() && t1.Item2.getEmpID() == t2.Item2.getEmpID()) ||
-                (t1.Item1.getEmpID() == t2.Item2.getEmpID() && t1.Item2.getEmpID() == t2.Item1.getEmpID()))
-             return true;
+            int t11 = t1.Item1.getEmpID();
+            int t12 = t1.Item2.getEmpID();
+            int t21 = t2.Item1.getEmpID();
+            int t22 = t2.Item2.getEmpID();
+            if (((t11 == t22) && (t12 == t22)) || ((t11 == t22) && (t12 == t21)))
+                return true;
             
             else return false;            
         }
         public void GetMaxWorkTime()
         {
-            List<Tuple<Employee, Employee>> workedtogether = new();
-            List<double> worktime = new();
-            worktime.Add(GetWorkTime(tuples[0]));
-            workedtogether.Add(tuples[0]);
-            double max = worktime[0];
+            List<Tuple<Employee, Employee>> workedТogether = new();
+            List<double> workТime = new();
+            workТime.Add(GetWorkTime(Тuples[0]));
+            workedТogether.Add(Тuples[0]);
+            double max = workТime[0];
             int maxInd = 0;
-            for(int i = 1; i < tuples.Count; ++i)
+            for(int i = 1; i < Тuples.Count; ++i)
             {
-                for(int j = 0; j < workedtogether.Count; ++j)
+                for(int j = 0; j < workedТogether.Count; ++j)
                 {
-                    if (EqualTuples(tuples[i], workedtogether[j]))
+                    if (EqualTuples(Тuples[i], workedТogether[j]))
                     {
-                        worktime[j] += GetWorkTime(tuples[i]);
-                        if (worktime[j] > max)
+                        workТime[j] += GetWorkTime(Тuples[i]);
+                        if (workТime[j] > max)
                         {
-                            max = worktime[j];
+                            max = workТime[j];
                             maxInd = j;
                         }
                     }
                 }
-                workedtogether.Add(tuples[i]);
-                worktime.Add(GetWorkTime(tuples[i]));
+                workedТogether.Add(Тuples[i]);
+                workТime.Add(GetWorkTime(Тuples[i]));
                 }
-            emp1 = workedtogether[maxInd].Item1.getEmpID();
-            emp2 = workedtogether[maxInd].Item2.getEmpID();
-            Console.WriteLine($"Employee {emp1} and employee {emp2} have worked the longest together: {worktime[maxInd]} days total.");
+            _emp1 = workedТogether[maxInd].Item1.getEmpID();
+            _emp2 = workedТogether[maxInd].Item2.getEmpID();
+            Console.WriteLine($"Employee {_emp1} and employee {_emp2} have worked the longest together: {workТime[maxInd]} days total.");
         }
     }
 }
